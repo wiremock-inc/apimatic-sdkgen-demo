@@ -1,0 +1,57 @@
+openapi: 3.0.1
+info:
+  title: APIMatic prototyping to SDK gen demo
+  version: 1.0.0
+servers:
+- url: https://apimatic-demo.wiremockapi.cloud
+
+paths:
+  /customers/{customerId}:
+    parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: detail
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+            - full
+            - summary
+
+    get:
+      operationId: getCustomerById
+      description: Gets a customer by ID.
+
+      responses:
+        '200':
+          description: Customer detail response
+          content:
+            application/json:
+              schema:
+                required:
+                  - id
+                  - firstName
+                  - lastName
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  firstName:
+                    type: string
+                  lastName:
+                    type: string
+
+              examples:
+                example-one:
+                  x-parameter-values:
+                    id: 5931ed73-dcd4-4e24-ad24-975ac288fa7f
+                    detail: full
+                  summary: First customer example
+                  value:
+                    id: 5931ed73-dcd4-4e24-ad24-975ac288fa7f
+                    firstName: Tom
+                    lastName: Akehurst
