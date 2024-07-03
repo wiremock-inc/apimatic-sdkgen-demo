@@ -25,14 +25,10 @@ info:
     identifier: CC-BY-NC-SA-4.0
 servers:
 - url: https://apimatic-demo.wiremockapi.cloud
-  description: Production
 security:
 - OAuth2:
   - read
-x-topics:
-- title: Getting started
-  content:
-    $ref: ./docs/getting-started.md
+
 tags:
 - name: Stations
   description: |
