@@ -22,7 +22,9 @@ jobs:
         run: npm install -g @apimatic/cli
 
       - name: Generate Typescript SDK
-        run: apimatic sdk:generate --destination=sdks/ts --platform TYPESCRIPT --file=openapi.yaml
+        run: |
+          apimatic auth:login --auth-key={{ secrets.APIMATIC_AUTH_KEY }}
+          apimatic sdk:generate --destination=sdks/ts --platform TYPESCRIPT --file=openapi.yaml
 
       - name: Set publishing coordiates
         working-directory: ./sdks/ts/openapi_sdk_typescript
