@@ -38,8 +38,7 @@ jobs:
         run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
 
       - name: Install project dependencies
-        working-directory: ./sdks/ts/openapi_sdk_typescript
-        run: npm i
+        run: (cd ./sdks/ts/openapi_sdk_typescript && npm i)
 
       - name: Publish to GitHub Packages NPM
         working-directory: ./sdks/ts/openapi_sdk_typescript
