@@ -18,7 +18,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'npm'
       - name: Install APIMatic CLI
         run: npm install -g @apimatic/cli
 
@@ -27,7 +26,10 @@ jobs:
 
       - name: Set publishing coordiates
         working-directory: ./sdks/ts/openapi_sdk_typescript
-        run: jq -r -s '.[0] * .[1]' package.json package-patch.json > tmp.json && mv -f tmp.json package.json
+        run: |
+          echo '{ "version": "1.0.{{ github.run_number }}", "name": "@wiremock-inc/apimatic-sdkgen-demo", "repository": "github:wiremock-inc/apimatic-sdkgen-demo" }' > package-patch.json
+          jq -r -s '.[0] * .[1]' package.json package-patch.json > tmp.json
+          mv -f tmp.json package.json
 
       - name: Authenticate with private NPM package
         working-directory: ./sdks/ts/openapi_sdk_typescript
