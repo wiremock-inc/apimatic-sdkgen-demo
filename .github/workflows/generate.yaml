@@ -26,15 +26,19 @@ jobs:
         run: apimatic sdk:generate --destination=sdks/ts --platform TYPESCRIPT --file=openapi.yaml
 
       - name: Set publishing coordiates
+        working-directory: ./sdks/ts/openapi_sdk_typescript
         run: jq -r -s '.[0] * .[1]' package.json package-patch.json > tmp.json && mv -f tmp.json package.json
 
       - name: Authenticate with private NPM package
+        working-directory: ./sdks/ts/openapi_sdk_typescript
         run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
 
       - name: Install project dependencies
-        run: npm ci
+        working-directory: ./sdks/ts/openapi_sdk_typescript
+        run: npm i
 
       - name: Publish to GitHub Packages NPM
+        working-directory: ./sdks/ts/openapi_sdk_typescript
         run: npm publish --scope=wiremock-inc --registry=https://npm.pkg.github.com
 
   
