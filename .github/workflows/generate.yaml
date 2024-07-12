@@ -26,12 +26,12 @@ jobs:
           apimatic auth:login --auth-key=${{ secrets.APIMATIC_AUTH_KEY }}
           apimatic sdk:generate --destination=sdks/ts --platform TYPESCRIPT --file=openapi.yaml
 
-      - name: Set publishing coordiates
-        working-directory: ./sdks/ts/openapi_sdk_typescript
-        run: |
-          echo '{ "version": "1.0.${{ github.run_number }}", "name": "@wiremock-inc/apimatic-sdkgen-demo", "repository": "github:wiremock-inc/apimatic-sdkgen-demo" }' > package-patch.json
-          jq -r -s '.[0] * .[1]' package.json package-patch.json > tmp.json
-          mv -f tmp.json package.json
+      #- name: Set publishing coordiates
+      #  working-directory: ./sdks/ts/openapi_sdk_typescript
+      #  run: |
+      #    echo '{ "version": "1.0.${{ github.run_number }}", "name": "@wiremock-inc/apimatic-sdkgen-demo", "repository": "github:wiremock-inc/apimatic-sdkgen-demo" }' > package-patch.json
+      #    jq -r -s '.[0] * .[1]' package.json package-patch.json > tmp.json
+      #    mv -f tmp.json package.json
 
       - name: Authenticate with private NPM package
         working-directory: ./sdks/ts/openapi_sdk_typescript
