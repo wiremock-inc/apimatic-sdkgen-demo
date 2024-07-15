@@ -39,7 +39,7 @@ jobs:
 
       - name: Install project dependencies
         working-directory: ./sdks/ts/openapi_sdk_typescript
-        run: npm i
+        run: pwd & npm i
 
       - name: Publish to GitHub Packages NPM
         working-directory: ./sdks/ts/openapi_sdk_typescript
