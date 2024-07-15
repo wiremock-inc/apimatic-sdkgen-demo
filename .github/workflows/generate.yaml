@@ -32,7 +32,7 @@ jobs:
           echo '{ "version": "1.0.${{ github.run_number }}", "name": "@wiremock-inc/apimatic-sdkgen-demo", "repository": "github:wiremock-inc/apimatic-sdkgen-demo" }' > package-patch.json
           jq -r -s '.[0] * .[1]' package.json package-patch.json > tmp.json
           mv -f tmp.json package.json
-          sed -i '' 's/"prepare"\: ".*"/"prepare"\: "rm \-rf dist \& tsc \-p tsconfig.esm.json \-\-traceResolution \& tsc \-p tsconfig\.cjs\.json \-\-traceResolution"/g' package.json
+          sed -i 's/"prepare"\: ".*"/"prepare"\: "rm \-rf dist \& tsc \-p tsconfig.esm.json \-\-traceResolution \& tsc \-p tsconfig\.cjs\.json \-\-traceResolution"/g' package.json
 
       - name: Authenticate with private NPM package
         working-directory: ./sdks/ts/openapi_sdk_typescript
