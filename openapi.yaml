@@ -24,7 +24,10 @@ info:
     name: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
     identifier: CC-BY-NC-SA-4.0
 servers:
-- url: https://apimatic-demo.wiremockapi.cloud
+  - url: https://wm-train-travel.wiremockapi.cloud
+    description: Train Travel mock  
+  - url: https://apimatic-demo.wiremockapi.cloud
+    description: APIMatic Train Travel playground
 security:
 - OAuth2:
   - read
