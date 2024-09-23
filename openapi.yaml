@@ -22,8 +22,13 @@ info:
     url: https://github.com/bump-sh-examples/train-travel-api/issues/new
 
 servers:
-  - url: https://wm-train-travel.wiremockapi.cloud
-    description: Train Travel API mock
+  - url: https://{host}
+    description: Mock Train Travel API - HTTPS    
+    variables: 
+      host:
+        default: wm-train-travel.wiremockapi.cloud
+        description: The fully-qualified hostname of the API
+
 
 security:
   - OAuth2:
