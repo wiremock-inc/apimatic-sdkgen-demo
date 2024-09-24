@@ -163,6 +163,7 @@ const client = new Client({
   },
   timeout: 0,
   environment: Environment.Production,
+  host: 'wm-train-travel.wiremockapi.cloud',
 });
 
 // obtain access token, needed for client to be authorized

@@ -12,6 +12,7 @@ function createConfigurationFromEnvironment(): Partial<Configuration> {
   const config: Partial<Configuration> = {};
 
   const environment = process.env.TRAIN_TRAVEL_API_LIB_ENVIRONMENT;
+  const host = process.env.TRAIN_TRAVEL_API_LIB_HOST;
   const timeout = process.env.TRAIN_TRAVEL_API_LIB_TIMEOUT;
   const oAuthClientId = process.env.TRAIN_TRAVEL_API_LIB_O_AUTH_CLIENT_ID;
   const oAuthClientSecret = process.env.TRAIN_TRAVEL_API_LIB_O_AUTH_CLIENT_SECRET;
@@ -19,6 +20,10 @@ function createConfigurationFromEnvironment(): Partial<Configuration> {
 
   if (environment !== undefined) {
     config.environment = environment as Environment;
+  }
+
+  if (host !== undefined) {
+    config.host = host;
   }
 
   if (timeout !== undefined && timeout !== '') {

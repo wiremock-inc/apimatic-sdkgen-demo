@@ -19,6 +19,7 @@ import {
   DEFAULT_RETRY_CONFIG,
 } from './defaultConfiguration';
 import { ApiError } from './core';
+import { pathTemplate, SkipEncode } from './core';
 import {
   AbortError,
   AuthenticatorInterface,
@@ -105,7 +106,7 @@ function createHttpClientAdapter(client: HttpClient): HttpClientInterface {
 function getBaseUri(server: Server = 'default', config: Configuration): string {
   if (config.environment === Environment.Production) {
     if (server === 'default') {
-      return 'https://wm-train-travel.wiremockapi.cloud';
+      return pathTemplate`https://${new SkipEncode(config.host)}`;
     }
     if (server === 'auth server') {
       return 'https://example.com/oauth';

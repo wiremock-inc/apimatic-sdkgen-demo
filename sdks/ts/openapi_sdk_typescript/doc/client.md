@@ -5,6 +5,7 @@ The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
+| `host` | `string` | The fully-qualified hostname of the API<br>*Default*: `'wm-train-travel.wiremockapi.cloud'` |
 | `environment` | `Environment` | The API environment. <br> **Default: `Environment.Production`** |
 | `timeout` | `number` | Timeout for API calls.<br>*Default*: `0` |
 | `httpClientOptions` | `Partial<HttpClientOptions>` | Stable configurable http client options. |
@@ -47,6 +48,7 @@ const client = new Client({
   },
   timeout: 0,
   environment: Environment.Production,
+  host: 'wm-train-travel.wiremockapi.cloud',
 });
 ```
 

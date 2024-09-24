@@ -13,6 +13,7 @@ import { OAuthToken } from './models/oAuthToken';
 export interface Configuration {
   timeout: number;
   environment: Environment;
+  host: string;
   /** @deprecated use authorizationCodeAuthCredentials field instead */
   oAuthClientId?: string;
   /** @deprecated use authorizationCodeAuthCredentials field instead */
